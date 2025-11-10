@@ -78,6 +78,7 @@ Plugin nạp thẻ điện thoại và bank transfer cho Minecraft server - Tíc
 - **PayOS Bank Transfer**: Cấu hình trong `plugins/ShibaCard/bank.yml`
 - **Bedrock Form**: Cấu hình trong `plugins/ShibaCard/bedrock.yml`
 - **MySQL**: Cấu hình trong `plugins/ShibaCard/config.yml`
+- **Discord Webhook**: Cấu hình trong `plugins/ShibaCard/webhook.yml`
 
 ## ⚙️ Cấu hình
 
@@ -303,6 +304,26 @@ plugins/ShibaCard/
 ├── log_success.txt     # Log nạp thẻ (nếu dùng Flatfile)
 └── offline_payments.yml # Pending offline payments
 ```
+## 🔔 Webhook Discord (webhook.yml)
+
+Plugin tích hợp sẵn gửi webhook Discord khi nạp thẻ/PayOS thành công.
+
+### Cấu hình
+
+```yaml
+webhook:
+  enabled: true
+  server-name: "ShibaCard"
+  discord:
+    webhook-url: "https://discord.com/api/webhooks/xxx/yyy"
+    avatar-url: "https://cdn.discordapp.com/emojis/852196570327244800.png"
+```
+
+### Sự kiện gửi webhook
+- Nạp thẻ điện thoại thành công (Card)
+- Nạp tiền Bank (PayOS) thành công (kể cả offline)
+
+Webhook hiển thị: tên người chơi, số tiền VNĐ, xu quy đổi (dựa `bank.yml` → `exchange-rate` khi là Bank), nguồn giao dịch (Card/Bank), server.
 
 ## 🐛 Troubleshooting
 
